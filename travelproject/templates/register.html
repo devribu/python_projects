@@ -1,0 +1,131 @@
+{%load static%}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Form</title>
+    <link href="{% static 'crd/style.css' %}" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <!-- Body of Form starts -->
+  	<div class="container">
+      <form method="post" action="" >
+		  {% csrf_token %}
+        <!--Username-->
+    		<div class="box">
+          <label for="username" class="fl fontLabel"> Username: </label>
+    			<div class="new iconBox">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </div>
+    			<div class="fr">
+    					<input type="text" name="username" placeholder="Username"
+              class="textBox" autofocus="on" required>
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		<!--Username-->
+
+        <!--First name-->
+    		<div class="box">
+          <label for="first_name" class="fl fontLabel"> First Name: </label>
+    			<div class="new iconBox">
+            <i class="fa fa-user" aria-hidden="true"></i>
+          </div>
+    			<div class="fr">
+    					<input type="text" name="first_name" placeholder="First Name"
+              class="textBox" autofocus="on" required>
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		<!--First name-->
+
+
+        <!--Last name-->
+    		<div class="box">
+          <label for="last_name" class="fl fontLabel"> Last Name: </label>
+    			<div class="fl iconBox"><i class="fa fa-user" aria-hidden="true"></i></div>
+    			<div class="fr">
+    					<input type="text" required name="last_name"
+              placeholder="Last Name" class="textBox">
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		<!--Last name-->
+
+
+<!--    		&lt;!&ndash;-Phone No.&#45;&#45;&#45;&#45;&ndash;&gt;-->
+<!--    		<div class="box">-->
+<!--          <label for="phone" class="fl fontLabel"> Phone No.: </label>-->
+<!--    			<div class="fl iconBox"><i class="fa fa-phone-square" aria-hidden="true"></i></div>-->
+<!--    			<div class="fr">-->
+<!--    					<input type="text" required name="phoneNo" maxlength="10" placeholder="Phone No." class="textBox">-->
+<!--    			</div>-->
+<!--    			<div class="clr"></div>-->
+<!--    		</div>-->
+<!--    		&lt;!&ndash;-Phone No.&#45;&#45;&ndash;&gt;-->
+
+
+    		<!---Email ID---->
+    		<div class="box">
+          <label for="email" class="fl fontLabel"> Email ID: </label>
+    			<div class="fl iconBox"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+    			<div class="fr">
+    					<input type="email" required name="email" placeholder="Email Id" class="textBox">
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		<!--Email ID----->
+
+
+    		<!---Password------>
+    		<div class="box">
+          <label for="password" class="fl fontLabel"> Password </label>
+    			<div class="fl iconBox"><i class="fa fa-key" aria-hidden="true"></i></div>
+    			<div class="fr">
+    					<input type="Password" required name="password" placeholder="Password" class="textBox">
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		<!---Password---->
+
+    		<!---Confirm Password------>
+    		<div class="box">
+          <label for="password1" class="fl fontLabel"> Confirm Password </label>
+    			<div class="fl iconBox"><i class="fa fa-key" aria-hidden="true"></i></div>
+    			<div class="fr">
+    					<input type="Password" required name="password1" placeholder="Confirm Password" class="textBox">
+    			</div>
+    			<div class="clr"></div>
+    		</div>
+    		<!---Confirm Password---->
+
+<!--    		&lt;!&ndash;-Gender-&#45;&#45;&ndash;&gt;-->
+<!--    		<div class="box radio">-->
+<!--          <label for="gender" class="fl fontLabel"> Gender: </label>-->
+<!--    				<input type="radio" name="Gender" value="Male" required> Male &nbsp; &nbsp; &nbsp; &nbsp;-->
+<!--    				<input type="radio" name="Gender" value="Female" required> Female-->
+<!--    		</div>-->
+<!--    		&lt;!&ndash;-Gender-&ndash;&gt;-->
+
+
+<!--    		&lt;!&ndash;Terms and Conditions&#45;&#45;&#45;&#45;&ndash;&gt;-->
+<!--    		<div class="box terms">-->
+<!--    				<input type="checkbox" name="Terms" required> &nbsp; I accept the terms and conditions-->
+<!--    		</div>-->
+<!--    		&lt;!&ndash;Terms and Conditions&#45;&#45;&#45;&#45;&ndash;&gt;-->
+
+
+
+    		<!---Submit Button------>
+    		<div class="box" style="background: #2d3e3f">
+    				<input type="Submit" name="Submit" class="submit">
+    		</div>
+    		<!---Submit Button----->
+      </form>
+	  {% for msg in messages %}
+		<h2>{{msg}}</h2>
+	  {% endfor %}
+  </div>
+  <!--Body of Form ends--->
+  </body>
+</html>
