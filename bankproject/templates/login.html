@@ -1,0 +1,216 @@
+<!--
+author: W3layouts
+author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Login</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Bank Card Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+	
+	<!-- css files -->
+    <link href="{% static 'css/bootstrap.css' %}" rel='stylesheet' type='text/css' /><!-- bootstrap css -->
+    <link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css' /><!-- custom css -->
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet"><!-- fontawesome css -->
+	<!-- //css files -->
+	
+	<!-- google fonts -->
+	<link href="//fonts.googleapis.com/css?family=Niramit:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext,thai,vietnamese" rel="stylesheet">
+	<!-- //google fonts -->
+	
+</head>
+<body>
+
+<!-- header -->
+<header>
+	<div class="container">
+		<!-- nav -->
+		<nav class="py-3 d-lg-flex">
+			<div id="logo">
+				<h1> <a href="/"><span class="fa fa-university"></span> Project Bank </a></h1>
+			</div>
+			<label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
+			<input type="checkbox" id="drop" />
+			<ul class="menu ml-auto mt-1">
+				<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					Branches
+				    </a>
+				    <ul class="dropdown-menu">
+					<li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Kottayam">Kottayam</a></li>
+					<li><hr class="dropdown-divider"></li>
+					<li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Idukki_district">Idukki</a></li>
+					<li><hr class="dropdown-divider"></li>
+					<li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Ernakulam">Ernakulam</a></li>
+					<li><hr class="dropdown-divider"></li>
+					<li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Thrissur">Thrissur</a></li>
+					<li><hr class="dropdown-divider"></li>
+					<li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Kozhikode">Kozhikode</a></li>
+				    </ul>
+				</li>
+
+				{% if user.is_authenticated %}
+				<li class="nav-item"><a class="nav-link" href="{% url 'bankapp:welcome' %}">{{user.username}}</a></li>
+				<li class="nav-item"><a class="nav-link" href="{% url 'credentials:logout' %}">Logout</a></li>
+				{% else %}
+				<li class="active"><a class="nav-link" href="{% url 'credentials:register' %}">Register</a></li>
+				{% endif %}
+			</ul>
+		</nav>
+		<!-- //nav -->
+	</div>
+</header>
+<!-- //header -->
+
+<!-- inner-banner -->
+<section class="inner-banner" id="home">
+	<div class="inner-layer">
+		<div class="container">
+		</div>
+	</div>
+</section>
+<!-- //inner-banner -->
+
+<!-- breadcrumb -->
+<div class="breadcrumb-w3pvt">
+	<div class="container">
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="/">Home</a>
+			</li>
+			<li class="breadcrumb-item" aria-current="page">Login</li>
+		</ol>
+	</nav>
+	</div>
+</div>
+<!-- //breadcrumb -->
+	
+<!-- login -->
+<section class="vh-100" style="background-color: #848884;">
+	<div class="container py-5 h-100">
+	  <div class="row d-flex justify-content-center align-items-center h-100">
+		<div class="col col-xl-10">
+		  <div class="card" style="border-radius: 1rem;">
+			<div class="row g-0">
+			  <div class="col-md-6 col-lg-5 d-none d-md-block">
+				<img src="{% static 'images/regac.jpg' %}"
+				  alt="register" class="img-fluid" style="border-radius: 1rem 0 0 1rem; height: 800px;" />
+			  </div>
+			  <div class="col-md-6 col-lg-7 d-flex align-items-center">
+				<div class="card-body p-4 p-lg-5 text-black">
+  
+				  <form method="post">
+					  {% csrf_token %}
+  
+					<div class="d-flex align-items-center mb-3 pb-1">
+					  
+					  <span class="h1 fw-bold mb-0">Project Bank</span><br>
+					</div>
+  
+					<h4 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px; text-align:center;">LOGIN</h4>
+  
+					<div class="form-outline mb-4">
+					  <label class="form-label" for="form2Example17">Username</label>
+					  <input type="text" name="username" id="form2Example17" class="form-control form-control-lg" />
+					</div>
+  
+					<div class="form-outline mb-4">
+					  <label class="form-label" for="form2Example27">Password</label>
+					  <input type="password" name="password" id="form2Example27" class="form-control form-control-lg" />
+					</div>
+  
+					<div class="pt-1 mb-4">
+					  <input class="btn btn-dark btn-lg btn-block" type="submit" value="Login" />
+					</div>
+
+					{% for msg in messages %}
+					 <div class="alert alert-warning" role="alert">
+					  <h6 style="color:red; padding:0px;">{{msg}}</h6>
+					 </div>
+					 {% endfor %}
+  
+					
+					<p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="{% url 'credentials:register' %}"
+						style="color: #393f81;">Register here</a></p>
+					
+				  </form>
+  
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </section>
+<!-- //login -->
+		
+
+
+
+<!-- copyright -->
+<section class="copy-right py-4">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-7">
+				<p class="">© 2022 Project Bank. All rights reserved
+				</p>
+			</div>
+			<div class="col-lg-5 mt-lg-0 mt-3">
+				<ul class="list-w3 d-sm-flex">
+					<li>
+						<a href="#">
+							Privicy Policy
+						</a>
+					</li>
+					<li class="mx-sm-4 mx-3">
+						<a href="#">
+							Terms & Conditions
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							Disclaimer.
+						</a>
+					</li>
+					<li>
+						<a href="#">
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- //copyright -->
+
+<!-- move top -->
+<div class="move-top text-right">
+	<a href="#home" class="move-top"> 
+		<span class="fa fa-angle-up  mb-3" aria-hidden="true"></span>
+	</a>
+</div>
+<!-- move top -->
+
+</body>
+</html>

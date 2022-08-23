@@ -1,0 +1,340 @@
+<!--
+author: W3layouts
+author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Application</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Bank Card Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+	
+	<!-- css files -->
+	<link href="{% static 'css/applicationstyle.css' %}" rel='stylesheet' type='text/css' /><!-- application -->
+    <link href="{% static 'css/bootstrap.css' %}" rel='stylesheet' type='text/css' /><!-- bootstrap css -->
+    <link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css' /><!-- custom css -->
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet"><!-- fontawesome css -->
+	<!-- //css files -->
+	
+	<!-- google fonts -->
+	<link href="//fonts.googleapis.com/css?family=Niramit:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext,thai,vietnamese" rel="stylesheet">
+	<!-- //google fonts -->
+	
+</head>
+<body>
+
+<!-- header -->
+<header>
+	<div class="container">
+		<!-- nav -->
+		<nav class="py-3 d-lg-flex">
+			<div id="logo">
+				<h1> <a href="/"><span class="fa fa-university"></span> Project Bank </a></h1>
+			</div>
+			<label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
+			<input type="checkbox" id="drop" />
+			<ul class="menu ml-auto mt-1">
+				<li class="nav-item"><a class="nav-link" href="{% url 'bankapp:index' %}">Home</a></li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					Branches
+				    </a>
+				    <ul class="dropdown-menu">
+					<li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Kottayam">Kottayam</a></li>
+					<li><hr class="dropdown-divider"></li>
+					<li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Idukki_district">Idukki</a></li>
+					<li><hr class="dropdown-divider"></li>
+					<li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Ernakulam">Ernakulam</a></li>
+					<li><hr class="dropdown-divider"></li>
+					<li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Thrissur">Thrissur</a></li>
+					<li><hr class="dropdown-divider"></li>
+					<li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Kozhikode">Kozhikode</a></li>
+				    </ul>
+				</li>
+
+				{% if user.is_authenticated %}
+				<li class="active"><a class="nav-link" href="{% url 'bankapp:welcome' %}">HI, {{user.username}}</a></li>
+				<li class="nav-item"><a class="nav-link" href="{% url 'credentials:logout' %}">Logout</a></li>
+				{% endif %}
+			</ul>
+		</nav>
+		<!-- //nav -->
+	</div>
+</header>
+<!-- //header -->
+
+<!-- inner-banner -->
+<section class="inner-banner" id="home">
+	<div class="inner-layer">
+		<div class="container">
+		</div>
+	</div>
+</section>
+<!-- //inner-banner -->
+
+<!-- breadcrumb -->
+<div class="breadcrumb-w3pvt">
+	<div class="container">
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="{% url 'bankapp:welcome' %}">Welcome</a>
+			</li>
+			<li class="breadcrumb-item" aria-current="page">Application</li>
+		</ol>
+	</nav>
+	</div>
+</div>
+<!-- //breadcrumb -->
+	
+<!-- Application -->
+<section class="h-100 bg-dark">
+	<div class="container py-5 h-100">
+	  <div class="row d-flex justify-content-center align-items-center h-100">
+		<div class="col">
+		  <div class="card card-registration my-4">
+			<div class="row g-0">
+			  
+			  <div class="col-xl-12">
+				<div class="card-body p-md-5 text-black">
+				  <h3 class="mb-5 text-uppercase">Account Opening Form</h3>
+				  {% if error %}
+				  <div class="alert alert-danger" role="alert">
+  					*Fill all the fields correctly!
+				  </div>
+				  {% endif %}
+				
+				  <form method="post">
+					{% csrf_token %}
+
+				  <div class="row">
+					<div class="col-md-12 mb-4">
+					  <div class="form-outline">
+						<label class="form-label" for="form3Example1m">Full name</label>
+						<input type="text" id="form3Example1m" name="name" class="form-control form-control-lg" />
+					  </div>
+					</div>
+				  </div>
+
+				  <div class="form-outline mb-4">
+					<label class="form-label" for="form3Example9">DOB</label>
+					<input type="date" name="dob" id="form3Example9" class="form-control form-control-lg" />
+				  </div>
+  
+				  <div class="row">
+					<div class="col-md-6 mb-4">
+					  <div class="form-outline">
+						<label class="form-label" for="form3Example1m1">Age</label>
+						<input type="text" id="form3Example1m1" name="age" class="form-control form-control-lg" />
+					  </div>
+					</div>
+				  </div>
+
+
+
+				  <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+  
+					<h6 class="mb-0 me-4">Gender: &nbsp; </h6>
+  
+					<div class="form-check form-check-inline mb-0 me-4">
+					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
+						value="female" />
+					  <label class="form-check-label" for="femaleGender">Female</label>
+					</div>
+  
+					<div class="form-check form-check-inline mb-0 me-4">
+					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
+						value="male" />
+					  <label class="form-check-label" for="maleGender">Male</label>
+					</div>
+  
+					<div class="form-check form-check-inline mb-0">
+					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
+						value="other" />
+					  <label class="form-check-label" for="otherGender">Other</label>
+					</div>
+  
+				  </div>
+
+
+
+
+				  <div class="form-outline mb-4">
+					<label class="form-label" for="form3Example90">Mobile</label>
+					<input type="text" name="mobile" id="form3Example90" class="form-control form-control-lg"  />
+				  </div>
+
+				  <div class="form-outline mb-4">
+					<label class="form-label" for="form3Example97">Email ID</label>
+					<input type="email" id="form3Example97" name="email" class="form-control form-control-lg" />
+				  </div>
+  
+				  <div class="form-outline mb-4">
+					<label class="form-label" for="form3Example8">Address</label>
+					<input type="text" name="address" id="form3Example8" class="form-control form-control-lg" />
+				  </div>
+  
+				  
+  
+				  <div class="row">
+					<div class="col-md-6 mb-4">
+
+					<div class="f-group">
+                	<label>Select District</label>
+                	<select name="district" id="district" onchange="populate(this.id, 'branch')">
+                    <option selected>--Select District--</option>
+                    <option value="kottayam">Kottayam</option>
+                    <option value="idukki">Idukki</option>
+                    <option value="ernakulam">Ernakulam</option>
+                    <option value="thrissur">Thrissur</option>
+                    <option value="kozhikode">Kozhikode</option>
+                	</select>
+            		</div>
+  
+					</div>
+
+					<div class="col-md-6 mb-4">
+
+				    <div class="f-group">
+					<label>Select Branch</label>
+					<select name="branch" id="branch">
+					<option selected>--Select Branch--</option>
+					</select>
+					</div>
+  
+					</div>
+				  </div>
+
+				<div class="row">
+					<div class="col-md-6 mb-4">
+					  <label class="form-label" for="form3Example8">Account Type:  &nbsp;</label>
+					  <select class="form-select" aria-label="Default select example">
+						  <option selected>Select Account Type</option>
+						  <option value="Saving Account">Saving Account</option>
+						  <option value="Current Account">Current Account</option>
+						  <option value="NRI Account">NRI Account</option>
+						  <option value="Business Account">Business Account</option>
+					  </select>
+					</div>
+				  </div>
+
+
+				  <div class="form-outline mb-4">
+					<label class="form-label" for="form3Example9">Materials should be provided</label>
+
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+						<label class="form-check-label" for="flexCheckDefault">Passbook</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+						<label class="form-check-label" for="flexCheckDefault">Debit Card</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+						<label class="form-check-label" for="flexCheckDefault">Credit Card</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+						<label class="form-check-label" for="flexCheckDefault">Cheque Book</label>
+					</div>
+
+				  </div>
+
+  
+				  <div class="d-flex justify-content-center">
+					<input type="submit" class="btn btn-warning btn-lg ms-2" value="Submit Form">
+				  </div>
+
+				</form><br>
+				{% for msg in messages %}
+				<div class="alert alert-success" role="alert">
+  				<h6>{{msg}}</h6>
+				<a href="{% url 'bankapp:index' %}">HOME Page</a>
+				</div>
+				{% endfor %}
+
+  
+				</div>
+			  </div>
+			</div>
+			  <div class="container d-flex justify-content"><a href="{% url 'bankapp:index' %}">Go to HOME</a></div>
+			  <div class="container d-flex justify-content-end">
+					<a href="{% url 'credentials:logout' %}" class="btn btn-danger">LOGOUT</a>
+				  </div>
+
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </section>
+
+<!-- //Application -->
+		
+
+
+
+<!-- copyright -->
+<section class="copy-right py-4">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-7">
+				<p class="">© 2022 Project Bank. All rights reserved
+				</p>
+			</div>
+			<div class="col-lg-5 mt-lg-0 mt-3">
+				<ul class="list-w3 d-sm-flex">
+					<li>
+						<a href="#">
+							Privicy Policy
+						</a>
+					</li>
+					<li class="mx-sm-4 mx-3">
+						<a href="#">
+							Terms & Conditions
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							Disclaimer.
+						</a>
+					</li>
+					<li>
+						<a href="#">
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- //copyright -->
+
+<!-- move top -->
+<div class="move-top text-right">
+	<a href="#home" class="move-top"> 
+		<span class="fa fa-angle-up  mb-3" aria-hidden="true"></span>
+	</a>
+</div>
+<!-- move top -->
+
+<script src="{% static 'welcome/js/formscript.js' %}"></script>
+</body>
+</html>
